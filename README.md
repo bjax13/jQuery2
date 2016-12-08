@@ -284,7 +284,7 @@ var advanceTask = function(task) {
   }
   task.remove();
 };
-```
+
 
 The next thing we want is to create a way for our tasks to be moved from **new**, to **in progress**, to **archived**, and eventually deleted.
 
