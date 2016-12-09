@@ -9,12 +9,12 @@ window.onload = function () {
   for (var i = 0; i < listo.length; i++) {
     if (listo[i].id === "new") {
 
-        // add function
+        addItem('#newList' , listo[i] , 'item')
     } else if (listo[i].id === "inProgress") {
-
+        addItem('#currentList' , listo[i] , listo[i].id)
       // add function
     }else if ((listo[i].id === "archived") ) {
-
+        addItem('#archivedList' , listo[i] , listo[i].id)
       // add function
     }
 
@@ -22,13 +22,6 @@ window.onload = function () {
 
 
 }
-
-
-
-$(document).ready(function () {
-
-  $('#newTaskForm').hide();
-
 
 function addItem(element, task , itemID) {
   $(element).append(
@@ -42,6 +35,13 @@ function addItem(element, task , itemID) {
                     '</a>'
               );
 }
+
+$(document).ready(function () {
+
+  $('#newTaskForm').hide();
+
+
+
 
   var Task = function (task) {
     this.task = task;
