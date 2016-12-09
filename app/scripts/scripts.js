@@ -1,9 +1,48 @@
+var listo = [];
+
+window.onload = function () {
+  if (localStorage['localListo'] !== null) {
+    listo = JSON.parse(localStorage['localListo']);
+  }else {
+    localStorage['localListo'] = JSON.stringify([]);
+  }
+  for (var i = 0; i < listo.length; i++) {
+    if (listo[i].id === "new") {
+
+        // add function
+    } else if (listo[i].id === "inProgress") {
+
+      // add function
+    }else if ((listo[i].id === "archived") ) {
+
+      // add function
+    }
+
+  }
+
+
+}
+
+
+
 $(document).ready(function () {
 
   $('#newTaskForm').hide();
 
 
-  var listo = [];
+function addItem(element, task , itemID) {
+  $(element).append(
+                    '<a href="#finish" class="" id="'+ itemID +'">' +
+                    '<li class="list-group-item">' +
+                    '<h3>' + task.task + '</h3>' +
+                    '<span class="arrow pull-right">' +
+                    '<i class="glyphicon glyphicon-arrow-right">' +
+                    '</span>' +
+                    '</li>' +
+                    '</a>'
+              );
+}
+
   var Task = function (task) {
     this.task = task;
     this.id = 'new';
@@ -14,16 +53,9 @@ $(document).ready(function () {
       listo.push(task);
 
       $('#newItemInput').val('');
-        $('#newList').append(
-                          '<a href="#finish" class="" id="item">' +
-                          '<li class="list-group-item">' +
-                          '<h3>' + task.task + '</h3>' +
-                          '<span class="arrow pull-right">' +
-                          '<i class="glyphicon glyphicon-arrow-right">' +
-                          '</span>' +
-                          '</li>' +
-                          '</a>'
-                    );
+          // place append into a function accessable by the global veriable.
+          addItem('#newList',task, "item" );
+
     }
     $('#newTaskForm').slideToggle('fast', 'linear');
 
