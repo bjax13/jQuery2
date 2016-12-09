@@ -4,7 +4,7 @@ window.onload = function () {
   if (localStorage['localListo'] !== null) {
     listo = JSON.parse(localStorage['localListo']);
   }else {
-    localStorage['localListo'] = JSON.stringify([]);
+    localStorage['localListo'] = JSON.stringify(listo);
   }
   for (var i = 0; i < listo.length; i++) {
     if (listo[i].id === "new") {
@@ -51,6 +51,7 @@ $(document).ready(function () {
     if(task) {
       task = new Task(task);
       listo.push(task);
+      localStorage['localListo'] = JSON.stringify(listo);
 
       $('#newItemInput').val('');
           // place append into a function accessable by the global veriable.
@@ -83,6 +84,7 @@ $(document).ready(function () {
     var task = this;
     advanceTask(task);
     this.id = 'inProgress';
+    localStorage['localListo'] = JSON.stringify(listo);
     $('#currentList').append(this.outerHTML);
   });
 
@@ -92,6 +94,7 @@ $(document).ready(function () {
     task.id = "archived";
     var changeIcon = task.outerHTML.replace('glyphicon-arrow-right', 'glyphicon-remove');
     advanceTask(task);
+    localStorage['localListo'] = JSON.stringify(listo);
     $('#archivedList').append(changeIcon);
   })
 
@@ -99,6 +102,7 @@ $(document).ready(function () {
     e.preventDefault();
     var task = this;
     advanceTask(task);
+    localStorage['localListo'] = JSON.stringify(listo);
   })
 
 
