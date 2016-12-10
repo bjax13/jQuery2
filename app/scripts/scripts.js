@@ -41,8 +41,6 @@ $(document).ready(function () {
   $('#newTaskForm').hide();
 
 
-
-
   var Task = function (task) {
     this.task = task;
     this.id = 'new';
